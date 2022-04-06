@@ -2,10 +2,20 @@
 <html>
   <head>
     <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
   </head>
+
   <body>
     <h1><%= title %></h1>
     <p>EJS Welcome to <%= title %></p>
+    <p><%= msg %></p>
+    <p>
+      <!-- locals的话 没有name也不会报错 -->
+      <%= locals.name %>
+    </p>
+    <hr />
+    <%- include('./components/user-info.ejs',{ isMe }) %>
+    <hr />
+    <%- include('./components/blog-list.ejs',{ blogList }) %>
   </body>
 </html>
