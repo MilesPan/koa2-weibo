@@ -1,13 +1,19 @@
-const router = require('koa-router')()
+const router = require("koa-router")();
+// 前缀prefix
+router.prefix("/users");
 
-router.prefix('/users')
+router.get("/", function (ctx, next) {
+  ctx.body = "this is a users response!";
+});
 
-router.get('/', function (ctx, next) {
-  ctx.body = 'this is a users response!'
-})
-
-router.get('/bar', function (ctx, next) {
-  ctx.body = 'this is a users/bar response'
-})
-
-module.exports = router
+router.get("/bar", function (ctx, next) {
+  ctx.body = "this is a users/bar response";
+});
+router.post("/login", async (ctx, next) => {
+  const { userName, password } = ctx.request.body;
+  ctx.body = {
+    userName,
+    password,
+  };
+});
+module.exports = router;
